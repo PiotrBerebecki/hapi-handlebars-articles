@@ -7,7 +7,7 @@ const handlebars = require('handlebars');
 require('./../src/views/helpers/format-date');
 
 
-tape('handlebars formatDate helper', (t) => {
+tape('handlebars - formatDate helper', (t) => {
   const partial = fs.readFileSync(path.join(__dirname, './../src/views/partials/main.hbs'), 'utf8');
   const template = handlebars.compile(partial);
 
@@ -23,7 +23,7 @@ tape('handlebars formatDate helper', (t) => {
 });
 
 
-tape('handlebars render display name of authors of all articles', (t) => {
+tape('handlebars - render display name of authors of all articles', (t) => {
   const partial = fs.readFileSync(path.join(__dirname, './../src/views/partials/main.hbs'), 'utf8');
   const template = handlebars.compile(partial);
 

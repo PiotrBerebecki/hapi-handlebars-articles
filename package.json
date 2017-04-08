@@ -10,7 +10,7 @@
     "start": "node src/start.js",
     "start:dev": "nodemon src/start.js -e 'js, css, html, hbs'",
     "pretest": "NODE_ENV=testing node database-build/db-build.js",
-    "test": "NODE_ENV=testing tape test/index.js | tap-spec",
+    "test": "NODE_ENV=testing tape test/index.test.js | tap-spec",
     "test:watch": "onchange 'src/**/*.js' 'src/**/*.hbs' 'test/**/*.js' - i -- npm test",
     "coverage": "istanbul cover tape -- -R spec 'test/tests.js'",
     "dbBuild": "node database-build/db-build.js"

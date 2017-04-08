@@ -2,7 +2,7 @@ const tape = require('tape');
 const server = require('./../src/server');
 
 
-tape('home route - check if the database results are displayed', (t) => {
+tape('server - home route - check if the database results are displayed', (t) => {
   const options = {
     url: '/',
     method: 'GET',
