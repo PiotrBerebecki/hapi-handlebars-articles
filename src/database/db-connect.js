@@ -11,6 +11,8 @@ if (process.env.NODE_ENV === 'testing') {
   env('config.env');
 }
 
+console.log('===== process.env.DATABASE_URL', process.env.DATABASE_URL);
+console.log('===== process.env', process.env);
 
 if (!process.env.DATABASE_URL) {
   throw new Error('DATABASE_URL missing from .env file');
