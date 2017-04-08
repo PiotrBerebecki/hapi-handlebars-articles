@@ -1,5 +1,5 @@
 {
-  "name": "mini-medium",
+  "name": "hapi-handlebars-articles",
   "version": "1.0.0",
   "description": "A very light-weight medium clone.",
   "main": "index.js",
@@ -10,9 +10,10 @@
     "start": "node src/start.js",
     "start:dev": "nodemon src/start.js -e 'js, css, html, hbs'",
     "notworkingpretest": "NODE_ENV=testing node database-build/db-build.js",
-    "test": "tape test/tests.js | tap-spec",
+    "test": "tape test/index.js | tap-spec",
     "test:watch": "onchange 'src/**/*.js' 'src/**/*.hbs' 'test/**/*.js' - i -- npm test",
-    "coverage": "istanbul cover tape -- -R spec 'test/tests.js'"
+    "coverage": "istanbul cover tape -- -R spec 'test/tests.js'",
+    "dbBuild": "node database-build/db-build.js"
   },
   "repository": {
     "type": "git",
