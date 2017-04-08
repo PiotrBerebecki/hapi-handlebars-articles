@@ -4,7 +4,6 @@ const connect = require('./db-connect');
 const get = {};
 
 
-
 get.articles = (callback) => {
 
   const sqlQuery = `
@@ -17,7 +16,6 @@ get.articles = (callback) => {
   });
 
 };
-
 
 
 module.exports = get;

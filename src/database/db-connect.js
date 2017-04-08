@@ -6,6 +6,7 @@ const env = require('env2');
 
 
 if (process.env.NODE_ENV === 'testing') {
+  console.log('===== process.env.NODE_ENV', process.env.NODE_ENV);
   env('config-test.env');
 } else {
   env('config.env');

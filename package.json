@@ -9,6 +9,7 @@
   "scripts": {
     "start": "node src/start.js",
     "start:dev": "nodemon src/start.js -e 'js, css, html, hbs'",
+    "pretest": "NODE_ENV=testing node database-build/db-build.js",
     "test": "tape tests/tests.js | tap-spec",
     "coverage": "istanbul cover tests/tests.js"
   },

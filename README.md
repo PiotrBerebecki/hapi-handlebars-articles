@@ -32,9 +32,7 @@ image_url | character varying(100) | not null
 
 ## Learnings
 
-### Setting up heroku postgresql database
-
-### Setup PostgreSQL on Heroku
+### Setup PostgreSQL database on Heroku
 
 1. create heroku app and push it to Heroku
 
@@ -68,49 +66,42 @@ RETURNING ID;
 1. Set up back end to connect to Heroku database
 https://devcenter.heroku.com/articles/heroku-postgresql#connecting-in-node-js
 
-### Setting up local database
+### Setting up local postgreSQL database
+
 - Setting up a test database:
 1. Open Postgres elephant app
-2. run ```psql``` in the terminal
-3. create a test database: ```CREATE DATABASE testDatabaseName;```
-4. run ```\c testDatabaseName```
-5. run ```\i ./database_build/db_build.sql``` or the path to your sql filter
-6. Create a config-test.env and add the test DATABASE_URL to this file (don't forget to add this file to .gitignore)
-7. set environmental variable to test, under scripts in package.json add the following: ```"pretest": "NODE_ENV=testing node database_build/db_build.js",
+1. run ```psql``` in the terminal
+1. create a test database: ```CREATE DATABASE testDatabaseName;```
+1. run ```\c testDatabaseName```
+1. run ```\i ./database_build/db_build.sql``` or the path to your sql filter
+1. Create a config-test.env and add the test DATABASE_URL to this file (don't forget to add this file to .gitignore)
+1. set environmental variable to test, under scripts in package.json add the following: ```"pretest": "NODE_ENV=testing node database_build/db_build.js",
 "test": "tape tests/tests.js | tap-spec",```
-8. Add the following to db_connect.js:
-
-
-### psql commands
+1. Setup config-test.env file:
 ```
-# list tables / relations
-\d
+DATABASE_URL=postgres://piotr:@localhost:5432/app_test
 
-#
-
-#
-
-#
-
-#
-
-#
-```
-
+1. Add the following to db_connect.js:
 
 ```sh
 const environment = require('env2');
 
-if (process.env.ENV === 'testing') {
+if (process.env.NODE_ENV === 'testing') {
   environment('config-test.env');
 } else {
   environment('config.env');
 }
 ```
 
-## Setting up travis with a local postgresql database and bcrypt
 
-### Local database
+### psql commands
+```
+# list tables / relations
+\d
+```
+
+
+### Setting up travis with a local postgreSQL database
 
 * Instruct travis to set up local database on its servers
 
@@ -125,7 +116,7 @@ before_script:
 DATABASE_URL=postgres://postgres@localhost:5432/app_test
 ```
 
-### Installing bcrypt
+### Setting up travis with bcrypt
 
 - Normally you would just type ```npm install bcrypt```. However, people on Linux (especially Ubuntu and Debian) might get an error because bcrypt needs to be compiled and the compiler and the relative utilities are missing. To fix this on a linux machine, type ```sudo apt-get install build-essential```. Only after that type ```npm install bcrypt```. Now it should work.
 

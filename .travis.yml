@@ -9,13 +9,31 @@ node_js:
   - "6.9.5"
 
 
+env:
+  - CXX=g++-4.8
+
+
+addons:
+  apt:
+    sources:
+    - ubuntu-toolchain-r-test
+    packages:
+    - gcc-4.8
+    - g++-4.8
+  #postgres: "9.4"
+
+
 before_script:
-  - psql -c 'create database app_test;' -U postgres
-  - psql -U postgres -d app_test -a -f database-build/db-build.sql
+  - psql -c 'create database hapi_handlebars_articles_test;' -U postgres
+  - psql -U postgres -d hapi_handlebars_articles_test -a -f database-build/db-build.sql
 
 
 script:
   - npm run coverage
+
+
+before_install:
+  - pip install --user codecov
 
 
 after_success:

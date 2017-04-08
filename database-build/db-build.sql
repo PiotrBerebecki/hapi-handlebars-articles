@@ -30,7 +30,7 @@ VALUES
 
 INSERT INTO articles (author_id, title, body_text, image_url, date_posted)
 VALUES
-(1, 'how to feed your fish', 'Aenean lacinia bibendum nulla sed consectetur.
+(1, 'LOCAL DATABASE====================', 'Aenean lacinia bibendum nulla sed consectetur.
         Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Vestibulum id ligula porta felis euismod semper. Morbi leo risus, porta ac consectetur ac, vestibulum at eros. Curabitur blandit tempus porttitor.', 'https://images.unsplash.com/photo-1430692032771-aae00435a3ff?dpr=1&auto=format&fit=crop&w=1080&h=NaN&q=80&cs=tinysrgb&crop=&bg=', 1491476523775),
 (2, 'I really like the outdoors', 'Aenean lacinia bibendum nulla sed consectetur. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Vestibulum id ligula porta felis euismod semper. Morbi leo risus, porta ac consectetur ac, vestibulum at eros. Curabitur blandit tempus porttitor.', 'https://images.unsplash.com/photo-1477777404980-710a373f2d7e?dpr=1&auto=format&fit=crop&w=1080&h=NaN&q=80&cs=tinysrgb&crop=&bg=', 1491562292752);
 
