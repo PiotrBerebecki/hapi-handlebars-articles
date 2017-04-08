@@ -10,7 +10,7 @@
     "start": "node src/start.js",
     "start:dev": "nodemon src/start.js -e 'js, css, html, hbs'",
     "test": "tape tests/tests.js | tap-spec",
-    "coverage": ""
+    "coverage": "istanbul cover tests/tests.js"
   },
   "repository": {
     "type": "git",

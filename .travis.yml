@@ -8,8 +8,8 @@ node_js:
 #
 
 before_script:
-  - "psql -c 'create database lmao_test;' -U postgres"
-  - "psql -U postgres -d lmao_test -a -f database/db_build.sql"
+  - "psql -c 'create database app_test;' -U postgres"
+  - "psql -U postgres -d app_test -a -f database-build/db-build.sql"
 
 script:
   - "npm run coverage"
