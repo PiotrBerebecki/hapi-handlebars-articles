@@ -1,3 +1,7 @@
+[![Build Status](https://travis-ci.org/PiotrBerebecki/hapi-handlebars-articles.svg?branch=master)](https://travis-ci.org/PiotrBerebecki/hapi-handlebars-articles)
+[![codecov](https://codecov.io/gh/PiotrBerebecki/hapi-handlebars-articles/branch/master/graph/badge.svg)](https://codecov.io/gh/PiotrBerebecki/hapi-handlebars-articles)
+
+
 ## Installation Instructions
 - Clone this repository
 - Run ```npm install```
