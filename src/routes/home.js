@@ -7,9 +7,8 @@ module.exports = {
   handler: (request, reply) => {
     get.articles((dbErr, articles) => {
       if (dbErr) {
-        return reply('index', {error: 'Database error'});
+        return reply.view('index', {error: 'Database error'});
       }
-
       reply.view('index', {articles});
     });
   }

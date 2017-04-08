@@ -1,4 +1,4 @@
-# make sure to add environmental variable on travis
+# make sure to add environmental variable on travis website
 # DATABASE_URL=postgres://postgres@localhost:5432/app_test
 
 
@@ -20,7 +20,8 @@ addons:
     packages:
     - gcc-4.8
     - g++-4.8
-  #postgres: "9.4"
+  #postgres: "9.6"
+  #postgress version may not be required
 
 
 before_script:

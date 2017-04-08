@@ -234,3 +234,86 @@ $FOOTER
   margin: 0 auto;
   border: 1px solid #000;
 }
+
+
+
+/*****************************************************************
+$LOGIN DIALOG
+*****************************************************************/
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  display: none;
+  align-items: center;
+  height: 100%;
+  width: 100%;
+  z-index: 1;
+  background-color: rgba(0,0,0,0.8);
+  overflow: auto;
+}
+
+.overlay-active {
+  display: flex;
+}
+
+.dialog {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  max-width: 40em;
+  margin: 0 auto;
+  padding: 1rem 0 1rem 0rem;
+  border: 1px solid rgba(0,0,0,.09);
+  border-radius: 3px;
+  background-color: rgb(255, 255, 255);
+  box-shadow: 0 1px 4px rgba(0,0,0,.04);
+}
+
+.login-form {
+  display: flex;
+  flex-direction: column;
+  color: #444;
+}
+
+.login-form {
+  margin-bottom: 1rem;
+}
+
+.register-form {
+  display: flex;
+  flex-direction: column;
+}
+
+.dialog__btn--close {
+  width: 2rem;
+  margin-left: auto;
+}
+
+
+
+
+
+
+
+/*****************************************************************
+$ERRORS
+*****************************************************************/
+.error__card {
+  margin-bottom: 1rem;
+  padding: 1rem 0 1rem 0rem;
+  border: 1px solid rgba(0,0,0,.09);
+  border-radius: 3px;
+  background-color: rgb(255, 255, 255);
+  box-shadow: 0 1px 4px rgba(0,0,0,.04);
+}
+
+@media screen and (min-width: 48em) {
+  .error__card {
+    padding: 1rem 1rem 2rem 1rem;
+  }
+}
+
+.error__message {
+  color: #8f8f8f;
+}

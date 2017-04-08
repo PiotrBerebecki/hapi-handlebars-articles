@@ -1,4 +1,3 @@
-// const server = require('./../src/server');
 const tape = require('tape');
 const fs = require('fs');
 const path = require('path');
@@ -40,26 +39,3 @@ tape('handlebars render display name of authors of all articles', (t) => {
   t.ok(html.indexOf('Orange Cat') !== -1, `should render ${context.articles[1].author_display_name}`);
   t.end();
 });
-
-
-
-
-
-
-
-
-
-
-
-// tape('home route - check if the database results are displayed', (t) => {
-//   const options = {
-//     url: '/',
-//     method: 'GET',
-//   };
-//
-//   server.inject(options, (res) => {
-//     console.log('===== res.payload', res.payload);
-//     t.ok(res.payload.indexOf('LOCAL') !== -1, 'should contain db response');
-//     t.end();
-//   });
-// });

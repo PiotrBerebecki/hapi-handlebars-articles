@@ -1,0 +1,21 @@
+<div class="overlay" id="js-overlay">
+  <div class="dialog" id="js-dialog">
+
+    <button class="dialog__btn--close" id="js-dialog-close-btn">X</button>
+    <form class="login-form" id="js-login-form" action="/login-post" method="POST">
+      <p class="login-form__title">Login</p>
+      <input type="text" name="username" placeholder="Enter username" required autocomplete="off"/>
+      <input type="password" name="password" placeholder="Enter password" required autocomplete="off"/>
+      <input type='submit' value='submit'>
+    </form>
+
+    <form class="register-form" action="/register-post" method="POST">
+      <p class="register-form__title">or register</p>
+      <input type="text" name="username" placeholder="Enter username" required />
+      <input type="password" name="password" placeholder="Enter password" required />
+      <input type="password" name="password" placeholder="Confirm password" required />
+      <input type='submit' value='submit'>
+    </form>
+
+  </div>
+</div>

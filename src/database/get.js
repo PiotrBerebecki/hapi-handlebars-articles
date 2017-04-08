@@ -17,7 +17,6 @@ get.articles = (callback) => {
 
   connect.query(sqlQuery, (err, response) => {
     if (err) { return callback(err); }
-    console.log('===== response.rows', response.rows);
     callback(null, response.rows);
   });
 
