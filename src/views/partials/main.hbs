@@ -1,13 +1,13 @@
 <main class="content__main">
   <div class="content__container">
-    
+
     {{#each articles}}
 
     <article class="item__card">
       <header class="item__header">
         <img class="item__avatar" src="{{avatar_url}}" alt="author avatar" />
         <div class="item__author">{{username}}</div>
-        <div class="item__date">{{date_posted}}</div>
+        <div class="item__date">{{formatDate date_posted}}</div>
       </header>
 
       <div class="item__image" style="background-image:url({{image_url}})">
