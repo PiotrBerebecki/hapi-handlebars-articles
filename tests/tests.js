@@ -9,15 +9,14 @@ tape('1', (t) => {
 });
 
 
-tape('check the route with invalid url', (t) => {
+tape('home route - check if the database results are displayed', (t) => {
   const options = {
     url: '/',
     method: 'GET',
   };
 
-
   server.inject(options, (res) => {
-    console.log('res', res.payload);
+    t.ok(res.payload.indexOf('fish') !== -1, 'should contain db response');
     t.end();
   });
 });
