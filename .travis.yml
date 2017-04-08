@@ -1,4 +1,10 @@
+# make sure to add environmental variable on travis
+# DATABASE_URL=postgres://postgres@localhost:5432/app_test
+
+
 language: node_js
+
+
 node_js:
   - "6.9.5"
 
@@ -7,8 +13,10 @@ before_script:
   - "psql -c 'create database app_test;' -U postgres"
   - "psql -U postgres -d app_test -a -f database-build/db-build.sql"
 
+
 script:
   - "npm run coverage"
+
 
 after_success:
   - ./node_modules/.bin/codecov -e TRAVIS_NODE_VERSION -f coverage/coverage.json
