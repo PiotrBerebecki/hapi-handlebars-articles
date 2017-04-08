@@ -9,9 +9,10 @@
   "scripts": {
     "start": "node src/start.js",
     "start:dev": "nodemon src/start.js -e 'js, css, html, hbs'",
-    "pretest": "NODE_ENV=testing node database-build/db-build.js",
-    "test": "tape tests/tests.js | tap-spec",
-    "coverage": "istanbul cover tests/tests.js"
+    "notworkingpretest": "NODE_ENV=testing node database-build/db-build.js",
+    "test": "tape test/tests.js | tap-spec",
+    "test:watch": "onchange 'src/**/*.js' 'src/**/*.hbs' 'test/**/*.js' - i -- npm test",
+    "coverage": "istanbul cover tape -- -R spec 'test/tests.js'"
   },
   "repository": {
     "type": "git",
@@ -32,6 +33,7 @@
     "hapi-context-credentials": "^2.0.0",
     "inert": "^4.2.0",
     "istanbul": "^0.4.5",
+    "onchange": "^3.2.1",
     "pg": "^6.1.5",
     "vision": "^4.1.1"
   },

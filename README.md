@@ -4,8 +4,8 @@
 
 ## Installation Instructions
 - Clone this repository
-- Run ```npm install```
-- Create a ```config.env``` filter
+- Run `npm install`
+- Create a `config.env` and `config-test.env` file
 - etc ... (To Be Completed once finished)
 
 
