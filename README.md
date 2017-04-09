@@ -6,39 +6,29 @@
 - Clone this repository
 - Run `npm install`
 - Create a `config.env` and `config-test.env` file
-- etc ... (To Be Completed once finished)
 
-
-## Create heroku app in Europe
-
-```sh
-heroku create app-name-here --region eu
+`config.env`:
+```
+DATABASE_URL={url of heroku postgres database}
+COOKIE_PASSWORD={ random cookie password minimum 32 characters}
 ```
 
-## Schema Diagrams
+`config-test.env`:
+```
+DATABASE_URL=postgres://{username here e.g. mike}:@localhost:5432/hapi_handlebars_articles_test
+COOKIE_PASSWORD={ random cookie password minimum 32 characters}
+```
 
-### users
-Column | Type | Modifiers
---- | --- | ---
-id | integer | not null default
-username | character varying(100) | not null
-password | character varying(100) | not null
-avatar_url | character varying(100) | not null
-
-### stories
-Column | Type | Modifiers
---- | --- | ---
-id | integer | not null default
-user_id | integer | not null
-title | character varying(100) | not null
-body_text | character varying(2000) | not null
-image_url | character varying(100) | not null
 
 ## Learnings
 
 ### Setup PostgreSQL database on Heroku
 
 1. create heroku app and push it to Heroku
+```
+heroku create app-name-here --region eu
+git push heroku master
+```
 
 1. create database on heroku or using herok cli
 ```
@@ -46,31 +36,18 @@ heroku addons:create heroku-postgresql:hobby-dev
 ```
 https://elements.heroku.com/addons/heroku-postgresql
 
-
 https://devcenter.heroku.com/articles/heroku-postgresql#create-a-new-database
 
 1. try accessing database from command line using psql
 ```
-psql databaseUrlhere
+psql databaseUrlhere (can be found in app settings on heroku)
 ```
 https://devcenter.heroku.com/articles/heroku-postgresql#pg-psql
 
-```sql
-CREATE TABLE movies (
-  id       SERIAL PRIMARY KEY,
-  title    VARCHAR(100) NOT NULL
-);
-
-INSERT INTO movies(title) VALUES
-  ('Matrix'),
-  ('Terminator')
-RETURNING ID;
-```
-
-1. Set up back end to connect to Heroku database
+1. Set up back end to connect to Heroku database (this is done in the `db_connect.js` file in this project)
 https://devcenter.heroku.com/articles/heroku-postgresql#connecting-in-node-js
 
-### Setting up local postgreSQL database
+### Setting up local postgreSQL database for testing
 
 - Setting up a test database:
 1. Open Postgres elephant app
@@ -106,7 +83,7 @@ if (process.env.NODE_ENV === 'testing') {
 
 
 
-### Setting up travis with a local postgreSQL database
+### Setting up travis with its own local postgreSQL database for testing
 
 * Instruct travis to set up local database on its servers
 
@@ -155,6 +132,31 @@ after_success:
 \d
 ```
 
+## Schema Diagrams
+
+### users
+Column | Type | Modifiers
+--- | --- | ---
+id | integer | not null default
+username | character varying(100) | not null
+password | character varying(100) | not null
+avatar_url | character varying(100) | not null
+
+### stories
+Column | Type | Modifiers
+--- | --- | ---
+id | integer | not null default
+user_id | integer | not null
+title | character varying(100) | not null
+body_text | character varying(2000) | not null
+image_url | character varying(100) | not null
+
 
 ### Wireframes tool
 [moqup.com](https://app.moqups.com/edit/page/ad64222d5)
+
+## Create heroku app in Europe
+
+```sh
+heroku create app-name-here --region eu
+```

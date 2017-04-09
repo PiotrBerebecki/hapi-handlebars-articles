@@ -12,7 +12,7 @@
     "pretest": "NODE_ENV=testing node database-build/db-build.js",
     "test": "NODE_ENV=testing tape test/index.test.js | tap-spec",
     "test:watch": "onchange 'src/**/*.js' 'src/**/*.hbs' 'test/**/*.js' - i -- npm test",
-    "coverage": "istanbul cover tape -- -R spec 'test/index.test.js'",
+    "coverage": "istanbul cover test/index.test.js",
     "dbBuild": "node database-build/db-build.js"
   },
   "repository": {

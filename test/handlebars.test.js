@@ -8,11 +8,11 @@ require('./../src/views/helpers/format-date');
 
 
 tape('handlebars - formatDate helper', (t) => {
-  const partial = fs.readFileSync(path.join(__dirname, './../src/views/partials/main.hbs'), 'utf8');
+  const partial = fs.readFileSync(path.join(__dirname, './../src/views/partials/home-main.hbs'), 'utf8');
   const template = handlebars.compile(partial);
 
   const context = {
-    articles: [
+    stories: [
       {date_posted: '1'},
     ]
   };
@@ -23,19 +23,19 @@ tape('handlebars - formatDate helper', (t) => {
 });
 
 
-tape('handlebars - render display name of authors of all articles', (t) => {
-  const partial = fs.readFileSync(path.join(__dirname, './../src/views/partials/main.hbs'), 'utf8');
+tape('handlebars - render display name of authors of all stories', (t) => {
+  const partial = fs.readFileSync(path.join(__dirname, './../src/views/partials/home-main.hbs'), 'utf8');
   const template = handlebars.compile(partial);
 
   const context = {
-    articles: [
+    stories: [
       {author_display_name: 'Grey Kitty'},
       {author_display_name: 'Orange Cat'},
     ]
   };
 
   const html = template(context);
-  t.ok(html.indexOf('Grey Kitty') !== -1, `should render ${context.articles[0].author_display_name}`);
-  t.ok(html.indexOf('Orange Cat') !== -1, `should render ${context.articles[1].author_display_name}`);
+  t.ok(html.indexOf('Grey Kitty') !== -1, `should render ${context.stories[0].author_display_name}`);
+  t.ok(html.indexOf('Orange Cat') !== -1, `should render ${context.stories[1].author_display_name}`);
   t.end();
 });
