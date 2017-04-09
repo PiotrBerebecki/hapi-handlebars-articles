@@ -74,12 +74,14 @@ https://devcenter.heroku.com/articles/heroku-postgresql#connecting-in-node-js
 
 - Setting up a test database:
 1. Open Postgres elephant app
-1. run ```psql``` in the terminal
-1. create a test database: ```CREATE DATABASE testDatabaseName;```
-1. run ```\c testDatabaseName```
-1. run ```\i ./database_build/db_build.sql``` or the path to your sql filter
+1. run `psql` in the terminal
+1. create a test database: `CREATE DATABASE testDatabaseName;`
+1. connect to database `\c testDatabaseName`
+1. run build script `\i ./database_build/db_build.sql`
 1. Create a config-test.env and add the test DATABASE_URL to this file (don't forget to add this file to .gitignore)
 1. set environmental variable to test, under scripts in package.json add the following:
+
+Note: postgres elephant app needs to be running to run the tests, but you don't need to be connected to database using the psql module.
 
 ```
 "pretest": "NODE_ENV=testing node database-build/db-build.js",
@@ -121,7 +123,7 @@ DATABASE_URL=postgres://postgres@localhost:5432/app_test
 
 ### Setting up travis with bcrypt
 
-- Normally you would just type ```npm install bcrypt```. However, people on Linux (especially Ubuntu and Debian) might get an error because bcrypt needs to be compiled and the compiler and the relative utilities are missing. To fix this on a linux machine, type ```sudo apt-get install build-essential```. Only after that type ```npm install bcrypt```. Now it should work.
+- Normally you would just type `npm install bcrypt`. However, people on Linux (especially Ubuntu and Debian) might get an error because bcrypt needs to be compiled and the compiler and the relative utilities are missing. To fix this on a linux machine, type `sudo apt-get install build-essential`. Only after that type `npm install bcrypt`. Now it should work.
 
 Travis is also a linux machine and requires a C++ compiler for using bcrypt, so make sure to include this in your travis.yml file.
 

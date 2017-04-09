@@ -26,8 +26,8 @@ CREATE TABLE articles (
 
 INSERT INTO users (username, first_name, last_name, password, avatar_url)
 VALUES
-('u1', 'Orange', 'Cat', '$2a$10$z.hMdUW5o1U.W95Vg/u.GOb65q6fRtsQY6mlykvbMZEHST2dASwz.', './images/u1_headshot.jpg'),
-('u2', 'Grey', 'Kitty', '$2a$10$6.m3YwrAjslzM2nUnwOMG.CSm2aVAfJrJxJOdU19eORVOHqz4UwDW', './images/u2_headshot.jpg');
+('u1', 'Orange', 'Cat', '$2a$10$lbczBZ5YwKsO6eC2Tm.9/.Xtky/2qjoXVR607Zs0ejmriJengZFqS', './images/u1_headshot.jpg'),
+('u2', 'Grey', 'Kitty', '$2a$10$XP3ZfjT33e0Qf.ANb8bJGegtVfhv1V7P2xsCry4I8W8p68.hBt/i2', './images/u2_headshot.jpg');
 
 
 INSERT INTO articles (author_id, title, body, image_url, date_posted)

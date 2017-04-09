@@ -210,7 +210,6 @@ $MAIN CONTENT HOME
 /*****************************************************************
 $MAIN CONTENT POST
 *****************************************************************/
-
 .postForm {
   width: 100%;
 }
@@ -261,38 +260,64 @@ $LOGIN DIALOG
   display: flex;
   flex-direction: column;
   width: 100%;
-  max-width: 40em;
+  max-width: 30em;
   margin: 0 auto;
-  padding: 1rem 0 1rem 0rem;
+  padding: 1rem;
   border: 1px solid rgba(0,0,0,.09);
   border-radius: 3px;
   background-color: rgb(255, 255, 255);
   box-shadow: 0 1px 4px rgba(0,0,0,.04);
 }
 
-.login-form {
+.dialog__btn--close {
+  width: 2rem;
+  margin-left: auto;
+  padding: 0.5rem;
+  background-color: #bbb;
+  color: white;
+  border: 0;
+  border-radius: 2px;
+  cursor: pointer;
+}
+
+.dialog__btn--close:hover {
+  background-color: #aaa;
+}
+
+.login-form, .register-form {
   display: flex;
   flex-direction: column;
-  color: #444;
 }
 
 .login-form {
   margin-bottom: 1rem;
 }
 
-.register-form {
-  display: flex;
-  flex-direction: column;
+.login-form__input, .register-form__input {
+  margin-top: 0.7rem;
+  padding: 0.6rem;
+  border: solid 1px #dfdfdf;
+  border-radius: 2px;
 }
 
-.dialog__btn--close {
-  width: 2rem;
-  margin-left: auto;
+.login-form__error, .register-form__error {
+  color: tomato;
 }
 
+.login-form__btn--submit, .register-form__btn--submit {
+  width: 100%;
+  margin-top: 0.7rem;
+  padding: 0.7rem;
+  background-color: #02b875;
+  color: white;
+  border: 0;
+  border-radius: 2px;
+  cursor: pointer;
+}
 
-
-
+.login-form__btn--submit:hover, .register-form__btn--submit:hover {
+  background-color: #1c9963;
+}
 
 
 
@@ -301,19 +326,14 @@ $ERRORS
 *****************************************************************/
 .error__card {
   margin-bottom: 1rem;
-  padding: 1rem 0 1rem 0rem;
+  padding: 2rem;
   border: 1px solid rgba(0,0,0,.09);
   border-radius: 3px;
   background-color: rgb(255, 255, 255);
   box-shadow: 0 1px 4px rgba(0,0,0,.04);
 }
 
-@media screen and (min-width: 48em) {
-  .error__card {
-    padding: 1rem 1rem 2rem 1rem;
-  }
-}
-
 .error__message {
   color: #8f8f8f;
+  text-align: center;
 }

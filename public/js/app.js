@@ -1,26 +1,74 @@
+// ******************************************************
+// LOGIN DIALOG TOGGLE
+// ******************************************************
+[document.getElementById('js-login-link'), document.getElementById('js-dialog-close-btn')]
+  .forEach(element => element.addEventListener('click',
+    (e) => toggleModalDisplay(e, document.getElementById('js-overlay'))));
 
-
-const loginRegisterLinkDOM = document.getElementById('js-login-link');
-const overlayDOM = document.getElementById('js-overlay');
-const dialogCloseBtnDOM = document.getElementById('js-dialog-close-btn');
-
-loginRegisterLinkDOM.addEventListener('click', toggleModalDisplay);
-dialogCloseBtnDOM.addEventListener('click', toggleModalDisplay);
-
-function toggleModalDisplay(e) {
+function toggleModalDisplay(e, overlayDOM) {
   e.preventDefault();
   overlayDOM.classList.toggle('overlay-active');
 }
 
 
-// ******************************************************
-// LOGIN FORM
-// ******************************************************
-const loginFormDOM = document.getElementById('js-login-form');
 
-loginFormDOM.addEventListener('submit', handleLoginSubmit);
+// ******************************************************
+// LOGIN FORM VALIDATION
+// ******************************************************
+[document.getElementById('js-login-form'), document.getElementById('js-register-form')]
+  .forEach(form => form.addEventListener('submit', handleAuthSubmit));
 
-function handleLoginSubmit(e) {
-  console.log('form submitted', e);
-  // e.preventDefault();
+
+function handleAuthSubmit(e) {
+  const formData = getFormValues(Array.from(e.target.childNodes));
+  if (isPasswordValid(formData.password)) {
+    if (formData.confirmedPassword && (formData.confirmedPassword !== formData.password)) {
+      e.preventDefault();
+      return renderAuthError('js-auth-error', 'Passwords did not match', this);
+    } else {
+      return;
+    }
+  } else {
+
+    e.preventDefault();
+    renderAuthError('js-auth-error', 'Password must include at least 1 number', this);
+  }
+}
+
+
+function renderAuthError(id, message, context = document) {
+  context.querySelector(`#${id}`).textContent = message;
+}
+
+
+function getFormValues(formChildren) {
+  const formData = {};
+
+  formChildren
+    .filter(isInput)
+    .forEach(element => {
+      switch (element.name) {
+        case 'username':
+          formData.username = element.value;
+          break;
+        case 'password':
+          formData.password = element.value;
+          break;
+        case 'confirmed-password':
+          formData.confirmedPassword = element.value;
+          break;
+      }
+    });
+
+  return formData;
+}
+
+
+function isInput(element) {
+  return element.nodeName === 'INPUT';
+}
+
+
+function isPasswordValid(password) {
+  return /[0-9]/.test(password);
 }

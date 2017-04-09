@@ -1,6 +1,10 @@
 <main class="content__main">
   <div class="content__container">
 
+    {{#if error}}
+      {{> error}}
+    {{/if}}
+
     {{#if articles}}
       {{#each articles}}
 
@@ -19,11 +23,6 @@
 
       {{/each}}
     {{/if}}
-
-    {{#if error}}
-      {{> error}}
-    {{/if}}
-
 
   </div>
 </main>
