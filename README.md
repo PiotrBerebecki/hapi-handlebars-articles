@@ -7,15 +7,21 @@
 - Run `npm install`
 - Create a `config.env` and `config-test.env` file
 
-`config.env`:
+`config.env` and heroku:
 ```
 DATABASE_URL={url of heroku postgres database}
 COOKIE_PASSWORD={ random cookie password minimum 32 characters}
 ```
 
-`config-test.env`:
+`config-test.env`
 ```
 DATABASE_URL=postgres://{username here e.g. mike}:@localhost:5432/hapi_handlebars_articles_test
+COOKIE_PASSWORD={ random cookie password minimum 32 characters}
+```
+
+travis
+```
+DATABASE_URL=postgres://postgres@localhost:5432/app_test
 COOKIE_PASSWORD={ random cookie password minimum 32 characters}
 ```
 
