@@ -4,15 +4,15 @@ const connect = require('./db-connect');
 const get = {};
 
 
-get.articles = (callback) => {
+get.stories = (callback) => {
 
   const sqlQuery = `
     SELECT u.first_name || ' ' || u.last_name AS author_display_name, u.avatar_url as author_avatar_url,
-           a.title, a.body, a.date_posted, a.image_url
-      FROM articles AS a
+           s.title, s.body, s.date_posted, s.image_url
+      FROM stories AS s
            INNER JOIN users AS u
-           ON u.id = a.author_id
-    ORDER BY a.id DESC
+           ON u.id = s.author_id
+    ORDER BY s.id DESC;
   `;
 
   connect.query(sqlQuery, (err, response) => {

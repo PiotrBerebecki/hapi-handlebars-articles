@@ -3,7 +3,7 @@ const connect = require('./db-connect');
 
 const authUser = (username, callback) => {
   const sqlQuery = `
-    SELECT u.first_name AS user_first_name, u.password, u.avatar_url AS user_avatar_url
+    SELECT u.first_name AS user_display_name, u.password, u.avatar_url AS user_avatar_url
       FROM users as u
      WHERE u.username = $1;
   `;

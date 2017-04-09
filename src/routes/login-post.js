@@ -18,7 +18,11 @@ module.exports = {
         }
 
         if (isAuthenticated) {
-          request.cookieAuth.set({user_first_name: dbUser.user_first_name, user_avatar_url: dbUser.user_avatar_url});
+          request.cookieAuth.set({
+            user_username: username,
+            user_display_name: dbUser.user_display_name,
+            user_avatar_url: dbUser.user_avatar_url
+          });
           return reply.redirect('/');
         } else {
           return reply.view('index', {error: 'Sorry, the password did not match'});

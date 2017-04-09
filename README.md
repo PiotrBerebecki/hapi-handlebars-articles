@@ -17,7 +17,7 @@ heroku create app-name-here --region eu
 
 ## Schema Diagrams
 
-### user
+### users
 Column | Type | Modifiers
 --- | --- | ---
 id | integer | not null default
@@ -25,7 +25,7 @@ username | character varying(100) | not null
 password | character varying(100) | not null
 avatar_url | character varying(100) | not null
 
-### article
+### stories
 Column | Type | Modifiers
 --- | --- | ---
 id | integer | not null default

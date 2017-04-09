@@ -54,7 +54,7 @@ $NAVBAR
 }
 
 .header__link {
-  margin-right: 2rem;
+  margin-right: 1rem;
   font-weight: 300;
   text-decoration: none;
   transition: .1s color;
@@ -82,8 +82,8 @@ $NAVBAR
 }
 
 .search__icon {
-  width: 1.6rem;
-  height: 1.6rem;
+  width: 1.5rem;
+  height: 1.5rem;
   vertical-align: middle;
   fill: #8f8f8f;
   transition: .1s all;
@@ -95,19 +95,65 @@ $NAVBAR
 }
 
 .search__input {
+  max-width: 6rem;
   border: 0;
-  padding-bottom: 0;
   vertical-align: middle;
   color: #444;
   font-size: 0.85rem;
   font-weight: 100;
-  height: 1rem;
-  line-height: 1rem;
 }
 
 .search__input:focus {
   outline: 0;
 }
+
+.navbar__profile-container {
+  position: relative;
+}
+
+.navbar__user-avatar {
+  margin-left: 0.5rem;
+  width: 2.2rem;
+  height: 2.2rem;
+  border-radius: 50%;
+  cursor: pointer;
+}
+
+.navbar__user-popover {
+  position: absolute;
+  right: 0%;
+  top: 137%;
+  width: 300%;
+  display: none;
+  flex-direction: column;
+  padding: 1rem 1rem;
+  border-radius: 3px;
+  background-color: white;
+  box-shadow: 0 1px 2px rgba(0,0,0,.25), 0 0 1px rgba(0,0,0,.35);
+}
+
+.navbar__user-popover--active {
+  display: flex;
+}
+
+.user-popover__link {
+  font-weight: 300;
+  text-decoration: none;
+  transition: .1s color;
+}
+
+.user-popover__link:not(:last-child) {
+  margin-bottom: 0.8rem;
+}
+
+.user-popover__link--chromeless {
+  color: #8f8f8f;
+}
+
+.user-popover__link--chromeless:hover {
+  color: #666666;
+}
+
 
 
 
@@ -127,7 +173,8 @@ $MAIN CONTENT HOME
 .item__card {
   margin-bottom: 1rem;
   padding: 1rem 0 1rem 0rem;
-  border: 1px solid rgba(0,0,0,.09);
+  border-top: 1px solid rgba(0,0,0,.09);
+  border-bottom: 1px solid rgba(0,0,0,.09);
   border-radius: 3px;
   background-color: rgb(255, 255, 255);
   box-shadow: 0 1px 4px rgba(0,0,0,.04);
@@ -136,6 +183,7 @@ $MAIN CONTENT HOME
 @media screen and (min-width: 48em) {
   .item__card {
     padding: 1rem 1rem 2rem 1rem;
+    border: 1px solid rgba(0,0,0,.09);
   }
 }
 
@@ -210,17 +258,50 @@ $MAIN CONTENT HOME
 /*****************************************************************
 $MAIN CONTENT POST
 *****************************************************************/
-.postForm {
-  width: 100%;
+.story-form__card {
+  display: flex;
+  flex-direction: column;
+  padding: 1rem 1rem 1rem 1rem;
+  border: 1px solid rgba(0,0,0,.09);
+  border-radius: 3px;
+  background-color: rgb(255, 255, 255);
+  box-shadow: 0 1px 4px rgba(0,0,0,.04);
 }
 
-.postForm__input {
-  width: 100%;
+@media screen and (min-width: 48em) {
+  .story-form__card {
+    padding: 1rem 1rem 1rem 1rem;
+  }
 }
 
-.postForm__textarea {
+.story__input--title {
+
+}
+
+.story__input--title, .story__input--body, .story__input--image-url {
+  margin-bottom: 0.7rem;
+  padding: 0.6rem;
+  border: solid 1px #dfdfdf;
+  border-radius: 2px;
+}
+
+.story__input--body {
+  height: 20rem;
+}
+
+.story-form__btn {
   width: 100%;
-  height: 100%;
+  margin-top: 0.7rem;
+  padding: 0.7rem;
+  background-color: #02b875;
+  color: white;
+  border: 0;
+  border-radius: 2px;
+  cursor: pointer;
+}
+
+.story-form__btn:hover {
+  background-color: #1c9963;
 }
 
 
@@ -300,7 +381,7 @@ $LOGIN DIALOG
   border-radius: 2px;
 }
 
-.login-form__error, .register-form__error {
+.login-form__error, .register-form__error, .story-form__error {
   color: tomato;
 }
 

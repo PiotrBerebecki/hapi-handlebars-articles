@@ -3,13 +3,24 @@
 
     {{> logo }}
 
-    <a href="/login-register" class="header__link header__link--new header__link--chromeless">
+
+    {{#if credentials.user_username}}
+
+    <a href="/new-story" class="header__link header__link--new header__link--accent">
      Write a story
     </a>
 
-    <a href="/login-register" class="header__link header__link--login header__link--accent" id="js-login-link">
+    {{else}}
+
+    <a href="/login-register" class="header__link header__link--new header__link--chromeless" id="js-new-story-link">
+     Write a story
+    </a>
+
+    <a href="/login-register" class="header__link header__link--accent" id="js-login-link">
       Log in / Register
     </a>
+
+    {{/if}}
 
     <form class="search__form" action="/search" method="get">
       <svg class="search__icon" viewBox="0 0 25 25">
@@ -20,10 +31,19 @@
       <input class="search__input" name="q" type="text" placeholder="Search articles" required autocomplete="off"/>
     </form>
 
-
-    <img class="navbar__avatar" src="{{user_avatar_url}}"/>
-    <span class="navbar__first-name">{{user_first_name}}fd</span>
-
+    {{#if credentials.user_username}}
+      <div class="navbar__profile-container">
+        <img tabindex="0" class="navbar__user-avatar" src="{{credentials.user_avatar_url}}" id="js-user-avatar"/>
+        <div class="navbar__user-popover" id="js-navbar-popover">
+          <a href="/@{{credentials.user_username}}" class="user-popover__link user-popover__link--chromeless">
+            Edit profile
+          </a>
+          <a href="/logout" class="user-popover__link user-popover__link--chromeless">
+            Sign out
+          </a>
+        </div>
+      </div>
+    {{/if}}
 
   </div>
 </header>
