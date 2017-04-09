@@ -19,6 +19,8 @@ DATABASE_URL=postgres://{username here e.g. mike}:@localhost:5432/hapi_handlebar
 COOKIE_PASSWORD={ random cookie password minimum 32 characters}
 ```
 
+- Test include database so you need to create a local postgres database and run it using for example the Postgres elephant app.
+
 
 ## Learnings
 
