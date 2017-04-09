@@ -24,7 +24,7 @@ server.register([vision, inert, cookieAuthModule, contextCredentials], err => {
   server.auth.strategy('base', 'cookie', 'optional', {
     password: process.env.COOKIE_PASSWORD,
     cookie: 'hapi-handlebars-articles-app',
-    isSecure: false,
+    isSecure: false, // set to false to make it work on localhost
     ttl: 24 * 60 * 60 * 1000
   });
 
