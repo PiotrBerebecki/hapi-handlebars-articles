@@ -15,17 +15,17 @@ COOKIE_PASSWORD={ random cookie password minimum 32 characters}
 
 `config-test.env`
 ```
-DATABASE_URL=postgres://{username here e.g. mike}:@localhost:5432/hapi_handlebars_articles_test
+DATABASE_URL=postgres://{username here e.g.mike}:@localhost:5432/hapi_handlebars_articles_test
 COOKIE_PASSWORD={ random cookie password minimum 32 characters}
 ```
 
-travis
+`travis` (make sure that the name of the database (at the end) matches the name of the database created in `.travis.yml` file)
 ```
-DATABASE_URL=postgres://postgres@localhost:5432/app_test
+DATABASE_URL=postgres://postgres@localhost:5432/hapi_handlebars_articles_test
 COOKIE_PASSWORD={ random cookie password minimum 32 characters}
 ```
 
-- Test include database so you need to create a local postgres database and run it using for example the Postgres elephant app.
+- Tests in this app involve database so you need to create a local postgres database and run it using for example the Postgres elephant app, the process is explained below.
 
 
 ## Learnings
@@ -60,8 +60,8 @@ https://devcenter.heroku.com/articles/heroku-postgresql#connecting-in-node-js
 - Setting up a test database:
 1. Open Postgres elephant app
 1. run `psql` in the terminal
-1. create a test database: `CREATE DATABASE testDatabaseName;`
-1. connect to database `\c testDatabaseName`
+1. create a test database: `CREATE DATABASE hapi_handlebars_articles_test;`
+1. connect to database `\c hapi_handlebars_articles_test`
 1. run build script `\i ./database_build/db_build.sql`
 1. Create a config-test.env and add the test DATABASE_URL to this file (don't forget to add this file to .gitignore)
 1. set environmental variable to test, under scripts in package.json add the following:
@@ -75,7 +75,7 @@ Note: postgres elephant app needs to be running to run the tests, but you don't 
 
 1. Setup config-test.env file:
 ```
-DATABASE_URL=postgres://piotr:@localhost:5432/app_test
+DATABASE_URL=postgres://piotr:@localhost:5432/hapi_handlebars_articles_test
 
 1. Add the following to db_connect.js:
 
@@ -97,13 +97,13 @@ if (process.env.NODE_ENV === 'testing') {
 
 ```
 before_script:
-  - "psql -c 'create database app_test;' -U postgres"
-  - "psql -U postgres -d app_test -a -f database-build/db-build.sql"
+  - "psql -c 'create database hapi_handlebars_articles_test;' -U postgres"
+  - "psql -U postgres -d hapi_handlebars_articles_test -a -f database-build/db-build.sql"
 ```
 
 * Go to repo settings on travis and add environmental variable
 ```
-DATABASE_URL=postgres://postgres@localhost:5432/app_test
+DATABASE_URL=postgres://postgres@localhost:5432/hapi_handlebars_articles_test
 ```
 
 ### Setting up travis with bcrypt
@@ -146,25 +146,22 @@ after_success:
 Column | Type | Modifiers
 --- | --- | ---
 id | integer | not null default
-username | character varying(100) | not null
-password | character varying(100) | not null
-avatar_url | character varying(100) | not null
+username | character varying(64) | not null
+first_name | character varying(64) | not null
+last_name | character varying(64) | not null
+password | character varying(64) | not null
+avatar_url | character varying(500) | not null
 
 ### stories
 Column | Type | Modifiers
 --- | --- | ---
 id | integer | not null default
-user_id | integer | not null
+author_id | integer | REFERENCES users(id)
 title | character varying(100) | not null
-body_text | character varying(2000) | not null
-image_url | character varying(100) | not null
+body | character varying(20000) | not null
+image_url | character varying(500) | not null
+date_posted | character varying(50) | not null
 
 
 ### Wireframes tool
 [moqup.com](https://app.moqups.com/edit/page/ad64222d5)
-
-## Create heroku app in Europe
-
-```sh
-heroku create app-name-here --region eu
-```

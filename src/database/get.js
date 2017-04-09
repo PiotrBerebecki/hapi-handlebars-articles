@@ -15,9 +15,6 @@ get.stories = (callback) => {
     ORDER BY s.id DESC;
   `;
 
-  console.log('===== process.env.DATABASE_URL in get', process.env.DATABASE_URL);
-  console.log('===== process.env.NODE_ENV in get', process.env.NODE_ENV);
-
   connect.query(sqlQuery, (err, response) => {
     if (err) { return callback(err); }
     callback(null, response.rows);
