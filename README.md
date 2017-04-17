@@ -168,4 +168,6 @@ after_success:
 https://www.codementor.io/devops/tutorial/getting-started-postgresql-server-mac-osx
 https://www.youtube.com/watch?v=MNQRi9N0Tn4
 
+When creating a server enter your psql username and password.
+
 
