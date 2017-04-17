@@ -164,5 +164,8 @@ after_success:
 ```
 
 
-### Wireframes tool
-[moqup.com](https://app.moqups.com/edit/page/ad64222d5)
+### Instqalling pgAdmin on Mac
+https://www.codementor.io/devops/tutorial/getting-started-postgresql-server-mac-osx
+https://www.youtube.com/watch?v=MNQRi9N0Tn4
+
+
