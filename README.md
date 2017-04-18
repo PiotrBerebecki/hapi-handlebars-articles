@@ -64,6 +64,7 @@ git push heroku master
 1. create database in heroku dashboard or use heroku cli
 ```
 heroku addons:create heroku-postgresql:hobby-dev
+heroku config
 ```
 https://elements.heroku.com/addons/heroku-postgresql
 
