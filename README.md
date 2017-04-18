@@ -170,4 +170,7 @@ https://www.youtube.com/watch?v=MNQRi9N0Tn4
 
 When creating a server enter your psql username and password.
 
+Connecting to heroku database using pgAdming
+http://stackoverflow.com/questions/11769860/connect-to-a-heroku-database-with-pgadmin
+
 
