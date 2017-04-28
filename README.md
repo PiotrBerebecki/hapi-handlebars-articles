@@ -30,6 +30,29 @@ COOKIE_PASSWORD={ random cookie password minimum 32 characters}
 
 ## Learnings
 
+### PostgresSQL - connection idling
+
+You can specify how long a client is allowed to remain idle before being closed:
+
+```javascript
+idleTimeoutMillis: 1000
+```
+
+### Heroku env variables
+
+```
+DATABASE_URL={url of heroku postgres database}
+COOKIE_PASSWORD={ random cookie password minimum 32 characters}
+```
+
+### Travis setup
+
+make sure that the name of the database (at the end) matches the name of the database created in `.travis.yml` file - see below for further info.
+```
+DATABASE_URL=postgres://postgres@localhost:5432/hapi_handlebars_articles_test
+COOKIE_PASSWORD={ random cookie password minimum 32 characters}
+```
+
 ### Setup PostgreSQL database on Heroku
 
 1. create heroku app and push it to Heroku
@@ -38,9 +61,10 @@ heroku create app-name-here --region eu
 git push heroku master
 ```
 
-1. create database on heroku or using herok cli
+1. create database in heroku dashboard or use heroku cli
 ```
 heroku addons:create heroku-postgresql:hobby-dev
+heroku config
 ```
 https://elements.heroku.com/addons/heroku-postgresql
 
@@ -69,8 +93,8 @@ https://devcenter.heroku.com/articles/heroku-postgresql#connecting-in-node-js
 Note: postgres elephant app needs to be running to run the tests, but you don't need to be connected to database using the psql module.
 
 ```
-"pretest": "NODE_ENV=testing node database-build/db-build.js",
-"test": "NODE_ENV=testing tape test/index.js | tap-spec",
+"pretest": "NODE_ENV=test node database-build/db-build.js",
+"test": "NODE_ENV=test tape test/index.test.js | tap-spec",
 ```
 
 1. Setup config-test.env file:
@@ -82,7 +106,7 @@ DATABASE_URL=postgres://piotr:@localhost:5432/hapi_handlebars_articles_test
 ```javascript
 const environment = require('env2');
 
-if (process.env.NODE_ENV === 'testing') {
+if (process.env.NODE_ENV === 'test') {
   environment('config-test.env');
 } else {
   environment('config.env');
@@ -140,28 +164,14 @@ after_success:
 \d
 ```
 
-## Schema Diagrams
 
-### users
-Column | Type | Modifiers
---- | --- | ---
-id | integer | not null default
-username | character varying(64) | not null
-first_name | character varying(64) | not null
-last_name | character varying(64) | not null
-password | character varying(64) | not null
-avatar_url | character varying(500) | not null
+### Instqalling pgAdmin on Mac
+https://www.codementor.io/devops/tutorial/getting-started-postgresql-server-mac-osx
+https://www.youtube.com/watch?v=MNQRi9N0Tn4
 
-### stories
-Column | Type | Modifiers
---- | --- | ---
-id | integer | not null default
-author_id | integer | REFERENCES users(id)
-title | character varying(100) | not null
-body | character varying(20000) | not null
-image_url | character varying(500) | not null
-date_posted | character varying(50) | not null
+When creating a server enter your psql username and password.
+
+Connecting to heroku database using pgAdming
+http://stackoverflow.com/questions/11769860/connect-to-a-heroku-database-with-pgadmin
 
 
-### Wireframes tool
-[moqup.com](https://app.moqups.com/edit/page/ad64222d5)
