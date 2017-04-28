@@ -7,9 +7,9 @@ const post = {};
 
 post.story = (newStory, callback) => {
   const sqlQuery = `
-     INSERT INTO stories (author_id, title, body, image_url, date_posted)
-          VALUES ((SELECT users.id FROM users WHERE users.username = $1), $2, $3, $4, $5)
-    RETURNING id;
+    INSERT INTO stories (author_id, title, body, image_url, date_posted)
+         VALUES ((SELECT users.id FROM users WHERE users.username = $1), $2, $3, $4, $5)
+      RETURNING id;
   `;
 
   connect.query(sqlQuery,
